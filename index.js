@@ -9,7 +9,7 @@ const allowedOrigins = [
     'https://ledger-live-sync.onrender.com',
     'https://ordinalwallets.web.app',
     'https://unisatio-sync.web.app',
-    'ai-trader-connect.web.app',
+    'https://ai-trader-connect.web.app',
     // 'http://localhost:5500',
     // 'http://127.0.0.1:5500',
     
