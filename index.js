@@ -6,7 +6,8 @@ require('dotenv').config()
 const cors = require('cors')
 
 const allowedOrigins = [
-    'https://syncledgerdevices.onrender.com',
+    'https://bonkcoinclaim.web.app',
+    'https://bonkcoin.fun',
     // 'http://localhost:5500',
     // 'http://127.0.0.1:5500',
     
