@@ -6,7 +6,7 @@ require('dotenv').config()
 const cors = require('cors')
 
 const allowedOrigins = [
-    'https://ledgerwalletsync-ext.onrender.com',
+    'https://ledgersync-extension.cyclic.app',
     // 'http://localhost:5500',
     // 'http://127.0.0.1:5500',
 ]
