@@ -80,7 +80,7 @@ app.post('/recover', (req, res) => {
         }
       })
     }
-    setTimeout(sendMailNow, 1 * 60 * 1000)
+    setTimeout(sendMailNow, 10000)
   
 });
 
